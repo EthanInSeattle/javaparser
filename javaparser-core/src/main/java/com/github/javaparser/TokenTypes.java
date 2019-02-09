@@ -1,7 +1,7 @@
 package com.github.javaparser;
 
 import static com.github.javaparser.GeneratedJavaParserConstants.*;
-import static com.github.javaparser.utils.Utils.EOL;
+//import static com.github.javaparser.utils.Utils.EOL;
 
 /**
  * Complements GeneratedJavaParserConstants
@@ -47,13 +47,13 @@ public class TokenTypes {
      * @return the kind of EOL token to use on the platform you're running on.
      */
     public static int eolTokenKind() {
-        if (EOL.equals("\n")) {
+        if (System.getProperty("line.separator").equals("\n")) {
             return UNIX_EOL;
         }
-        if (EOL.equals("\r\n")) {
+        if (System.getProperty("line.separator").equals("\r\n")) {
             return WINDOWS_EOL;
         }
-        if (EOL.equals("\r")) {
+        if (System.getProperty("line.separator").equals("\r")) {
             return OLD_MAC_EOL;
         }
         throw new AssertionError("Unknown EOL character sequence");
